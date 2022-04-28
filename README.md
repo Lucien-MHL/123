@@ -1,6 +1,6 @@
 # todo-list
 
-<h2><a href="https://lucien-mhl.github.io/todo-list/">Demo link</a></h2>
+<h6><a href="https://lucien-mhl.github.io/todo-list/">Demo link</a></h6>
 此作品使用到的技術有
 <ul>
   <li>Bootstrap</li>
