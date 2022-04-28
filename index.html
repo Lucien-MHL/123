@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>代辦清單</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body class="bg-dark container-fluid">
+    <div class="wrap mx-auto">
+      <!-- header -->
+      <nav class="row px-2 py-3">
+        <h1 class="text-white col-12 col-md-6 pb-md-0">To-do List</h1>
+        <ul
+          class="text-white-50 col-12 col-md-3 ms-md-auto mb-md-0 d-flex align-items-center justify-content-between justify-content-md-evenly user-select-none"
+        >
+          <li class="add-btn">
+            <i class="bi bi-plus-square"></i> 添加
+          </li>
+          <li id="dropdownMenuButton" data-bs-toggle="dropdown">
+            <i class="bi bi-filter-square"></i>
+            排序
+          </li>
+          <ul class="dropdown-menu" id="sort-menu" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item">依時間</a></li>
+            <hr class="my-1" />
+            <li><a class="dropdown-item">依重要性</a></li>
+          </ul>
+        </ul>
+      </nav>
+
+      <!-- 添加視窗 -->
+      <form class="bg-white p-3 px-md-4 rounded-3 mx-md-5 mb-5">
+        <label for="form-select" class="col-form-label">重要性:</label>
+        <select
+          class="form-select todo-value mb-3"
+          aria-label="Default select example"
+          required
+        >
+          <option value="" disabled selected>請選擇...</option>
+          <option value="danger">極度重要</option>
+          <option value="waring">中度重要</option>
+          <option value="fine">輕度重要</option>
+        </select>
+        <label for="title" class="col-form-label">代辦事項標題:</label>
+        <input type="text" class="form-control todo-value mb-3" id="title" required />
+        <label for="time" class="col-form-label">代辦事項時間:</label>
+        <input type="date" class="form-control todo-value mb-3" id="time" value="" required/>
+        <label for="text" class="col-form-label">代辦事項內容:</label>
+        <textarea class="form-control todo-value mb-3" id="text" required ></textarea>
+        <footer class="d-flex justify-content-end">
+          <button
+            type="button"
+            class="btn btn-secondary me-2"
+          >
+            取消
+          </button>
+          <button type="submit" class="btn btn-primary">添加</button>
+        </footer>
+      </form>
+      <section id="section">
+      </section>
+
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
+    <script src="./mian.js"></script>
+  </body>
+</html>
