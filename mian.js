@@ -108,37 +108,22 @@ save.addEventListener("click", (e) => {
 
   // active when press delete button
   activeDelete.addEventListener("click", (e) => {
-    let deleteCard = e.target.parentElement.parentElement;
-    deleteCard.style = "transition: 0.5s; transform: scale(0);";
-
-    deleteCard.addEventListener("transitionend", function () {
-      let dataArray = JSON.parse(localStorage.getItem("list"));
-      let thisImportant = this.children[0].children[0].children[0].classList;
-      let thisTitle =
-        this.children[0].children[0].children[1].innerText.split("");
-      let thisDate = this.children[0].children[1].innerText;
-      let thisDateArray = thisDate.split("-");
-      let thisDateArrayOfYear = thisDateArray[0];
-      let thisDateArrayOfMonth = thisDateArray[1];
-      let thisDateArrayOfDay = thisDateArray[2];
-      let thisText = this.children[1].innerText;
-
-      dataArray.forEach((item, index) => {
-        if (
-          thisImportant.contains(item.data_important) &&
-          thisTitle.length == item.data_title.split("").length &&
-          item.data_timeOfYear == thisDateArrayOfYear &&
-          item.data_timeOfMonth == thisDateArrayOfMonth &&
-          item.data_timeOfDay == thisDateArrayOfDay &&
-          thisText.toString() == item.data_text
-        ) {
-          dataArray.splice(index, 1);
+    let thisCard = e.target.parentElement.parentElement;
+    let cardsParent = thisCard.parentElement;
+    thisCard.classList.add("delete");
+    for (let i = 0; i < cardsParent.children.length; i++) {
+      if (cardsParent.children[i].classList.contains("delete")) {
+        cardsParent.children[i].style =
+          "transition: 0.5s; transform: scale(0);";
+        thisCard.addEventListener("transitionend", function () {
+          let dataArray = JSON.parse(localStorage.getItem("list"));
+          dataArray.splice(i, 1);
           localStorage.setItem("list", JSON.stringify(dataArray));
-        }
-      });
 
-      deleteCard.remove();
-    });
+          thisCard.remove();
+        });
+      }
+    }
   });
 
   // make an object
@@ -161,9 +146,9 @@ save.addEventListener("click", (e) => {
     localStorage.setItem("list", JSON.stringify(dataArray));
   }
 
-  data.forEach((e) => {
-    e.value = "";
-  });
+  // data.forEach((e) => {
+  //   e.value = "";
+  // });
 });
 
 function loadData() {
@@ -236,37 +221,21 @@ function loadData() {
 
       // active when press delete button
       activeDelete.addEventListener("click", (e) => {
-        let deleteCard = e.target.parentElement.parentElement;
-        deleteCard.style = "transition: 0.5s; transform: scale(0);";
-
-        deleteCard.addEventListener("transitionend", function () {
-          let thisImportant =
-            this.children[0].children[0].children[0].classList;
-          let thisTitle =
-            this.children[0].children[0].children[1].innerText.split("");
-          let thisDate = this.children[0].children[1].innerText;
-          let thisDateArray = thisDate.split("-");
-          let thisDateArrayOfYear = thisDateArray[0];
-          let thisDateArrayOfMonth = thisDateArray[1];
-          let thisDateArrayOfDay = thisDateArray[2];
-          let thisText = this.children[1].innerText;
-
-          dataArray.forEach((item, index) => {
-            if (
-              thisImportant.contains(item.data_important) &&
-              thisTitle.length == item.data_title.split("").length &&
-              item.data_timeOfYear == thisDateArrayOfYear &&
-              item.data_timeOfMonth == thisDateArrayOfMonth &&
-              item.data_timeOfDay == thisDateArrayOfDay &&
-              thisText.toString() == item.data_text
-            ) {
-              dataArray.splice(index, 1);
+        let thisCard = e.target.parentElement.parentElement;
+        let cardsParent = thisCard.parentElement;
+        thisCard.classList.add("delete");
+        for (let i = 0; i < cardsParent.children.length; i++) {
+          if (cardsParent.children[i].classList.contains("delete")) {
+            cardsParent.children[i].style =
+              "transition: 0.5s; transform: scale(0);";
+            thisCard.addEventListener("transitionend", function () {
+              let dataArray = JSON.parse(localStorage.getItem("list"));
+              dataArray.splice(i, 1);
               localStorage.setItem("list", JSON.stringify(dataArray));
-            }
-          });
-
-          deleteCard.remove();
-        });
+              thisCard.remove();
+            });
+          }
+        }
       });
     });
   }
