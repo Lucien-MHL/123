@@ -146,9 +146,9 @@ save.addEventListener("click", (e) => {
     localStorage.setItem("list", JSON.stringify(dataArray));
   }
 
-  // data.forEach((e) => {
-  //   e.value = "";
-  // });
+  data.forEach((e) => {
+    e.value = "";
+  });
 });
 
 function loadData() {
