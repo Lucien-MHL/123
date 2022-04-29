@@ -55,12 +55,14 @@ body {
           background-color: #fff;
         }
 
-        ul {
+        ul.card-modify {
           li:hover {
             background-color: #eee;
 
-            &:first-child {
-              color: rgb(125, 207, 58);
+            @media (min-width: 1200px) {
+              &:first-child {
+                color: rgb(125, 207, 58);
+              }
             }
 
             &:last-child {
@@ -82,6 +84,12 @@ body {
         .card-body,
         .card-modify {
           opacity: 0.2;
+        }
+
+        .card-modify {
+          li:first-child {
+            color: rgb(125, 207, 58);
+          }
         }
 
         &::before {

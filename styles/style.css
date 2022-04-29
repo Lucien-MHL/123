@@ -50,20 +50,22 @@ body .wrap section .card .card-modify {
   background-color: #fff;
 }
 
-body .wrap section .card ul li:hover {
+body .wrap section .card ul.card-modify li:hover {
   background-color: #eee;
 }
 
-body .wrap section .card ul li:hover:first-child {
-  color: #7dcf3a;
+@media (min-width: 1200px) {
+  body .wrap section .card ul.card-modify li:hover:first-child {
+    color: #7dcf3a;
+  }
 }
 
-body .wrap section .card ul li:hover:last-child {
+body .wrap section .card ul.card-modify li:hover:last-child {
   color: #eb4c4c;
 }
 
-body .wrap section .card ul li:hover i.bi,
-body .wrap section .card ul li:hover p.fs-6 {
+body .wrap section .card ul.card-modify li:hover i.bi,
+body .wrap section .card ul.card-modify li:hover p.fs-6 {
   pointer-events: none;
 }
 
@@ -75,6 +77,10 @@ body .wrap section .isComplete .card-header,
 body .wrap section .isComplete .card-body,
 body .wrap section .isComplete .card-modify {
   opacity: 0.2;
+}
+
+body .wrap section .isComplete .card-modify li:first-child {
+  color: #7dcf3a;
 }
 
 body .wrap section .isComplete::before {
