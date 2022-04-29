@@ -103,7 +103,12 @@ save.addEventListener("click", (e) => {
   // active when press complete button
   activeComplete.addEventListener("click", (e) => {
     let thisCard = e.target.parentElement.parentElement;
-    thisCard.classList.toggle("isComplete");
+
+    if (thisCard.classList.contains("isComplete")) {
+      thisCard.classList.remove("isComplete");
+    } else {
+      thisCard.classList.add("isComplete");
+    }
   });
 
   // active when press delete button
@@ -115,6 +120,7 @@ save.addEventListener("click", (e) => {
       if (cardsParent.children[i].classList.contains("delete")) {
         cardsParent.children[i].style =
           "transition: 0.5s; transform: scale(0);";
+
         thisCard.addEventListener("transitionend", function () {
           let dataArray = JSON.parse(localStorage.getItem("list"));
           dataArray.splice(i, 1);
@@ -216,7 +222,12 @@ function loadData() {
       // active when press complete button
       activeComplete.addEventListener("click", (e) => {
         let thisCard = e.target.parentElement.parentElement;
-        thisCard.classList.toggle("isComplete");
+
+        if (thisCard.classList.contains("isComplete")) {
+          thisCard.classList.remove("isComplete");
+        } else {
+          thisCard.classList.add("isComplete");
+        }
       });
 
       // active when press delete button
