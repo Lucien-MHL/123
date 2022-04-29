@@ -103,12 +103,20 @@ save.addEventListener("click", (e) => {
   // active when press complete button
   activeComplete.addEventListener("click", (e) => {
     let thisCard = e.target.parentElement.parentElement;
-
-    if (thisCard.classList.contains("isComplete")) {
-      thisCard.classList.remove("isComplete");
-    } else {
-      thisCard.classList.add("isComplete");
+    let cardsParent = thisCard.parentElement;
+    thisCard.classList.toggle("isComplete");
+    for (let i = 0; i < cardsParent.children.length; i++) {
+      if (cardsParent.children[i].classList.contains("isComplete")) {
+        let dataArray = JSON.parse(localStorage.getItem("list"));
+        dataArray[i].data_complete = true;
+        localStorage.setItem("list", JSON.stringify(dataArray));
+      } else {
+        let dataArray = JSON.parse(localStorage.getItem("list"));
+        dataArray[i].data_complete = false;
+        localStorage.setItem("list", JSON.stringify(dataArray));
+      }
     }
+    let dataArray = JSON.parse(localStorage.getItem("list"));
   });
 
   // active when press delete button
@@ -177,7 +185,11 @@ function loadData() {
       let activeDelete = document.createElement("li");
 
       // name card's components class
-      card.className = "card mb-4 mx-auto";
+      if (element.data_complete) {
+        card.className = "card mb-4 mx-auto isComplete";
+      } else {
+        card.className = "card mb-4 mx-auto";
+      }
       cardHeader.className =
         "card-header d-flex flex-column flex-md-row pb-md-0";
       headerTitle.className = "title d-flex d-md-inline-flex";
@@ -222,12 +234,20 @@ function loadData() {
       // active when press complete button
       activeComplete.addEventListener("click", (e) => {
         let thisCard = e.target.parentElement.parentElement;
-
-        if (thisCard.classList.contains("isComplete")) {
-          thisCard.classList.remove("isComplete");
-        } else {
-          thisCard.classList.add("isComplete");
+        let cardsParent = thisCard.parentElement;
+        thisCard.classList.toggle("isComplete");
+        for (let i = 0; i < cardsParent.children.length; i++) {
+          if (cardsParent.children[i].classList.contains("isComplete")) {
+            let dataArray = JSON.parse(localStorage.getItem("list"));
+            dataArray[i].data_complete = true;
+            localStorage.setItem("list", JSON.stringify(dataArray));
+          } else {
+            let dataArray = JSON.parse(localStorage.getItem("list"));
+            dataArray[i].data_complete = false;
+            localStorage.setItem("list", JSON.stringify(dataArray));
+          }
         }
+        let dataArray = JSON.parse(localStorage.getItem("list"));
       });
 
       // active when press delete button
